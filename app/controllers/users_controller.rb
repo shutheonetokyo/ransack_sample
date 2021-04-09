@@ -3,6 +3,6 @@ class UsersController < ApplicationController
 
   def index
     @q = User.ransack(params[:q])
-    @users = User.page(params[:page]).per(PER_PAGE)
+    @users = @q.result.page(params[:page]).per(PER_PAGE)
   end
 end
